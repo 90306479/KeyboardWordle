@@ -46,16 +46,34 @@ class ViewController: UIViewController {
     @IBOutlet weak var GoKey: UIButton!
     @IBOutlet weak var BackKey: UIButton!
     
+    
     let targetWord = "MATCH"
     
     
     var currentLabel: UILabel!
+    
+    var keyButtons:[UIButton]!
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         currentLabel = firstLetLabel
+        roundAllLabels()
+        keyButtons = [AKey, BKey, CKey, DKey, EKey, FKey, GKey, HKey, IKey, JKey, KKey, LKey, MKey, NKey, OKey, PKey, QKey, RKey, SKey, TKey, UKey, VKey, WKey, XKey, YKey, ZKey]
+    }
+    
+    func roundAllLabels() {
+        roundOneLabel(label: firstLetLabel)
+        roundOneLabel(label: secondLetLabel)
+        roundOneLabel(label: thirdLetLabel)
+        roundOneLabel(label: fourthLetLabel)
+        roundOneLabel(label: fifthLetLabel)
+    }
+    
+    func roundOneLabel(label: UILabel) {
+        label.layer.masksToBounds = true
+        label.layer.cornerRadius = 15
     }
     
     
@@ -139,7 +157,10 @@ class ViewController: UIViewController {
     }
     
     @IBAction func GoTap(_ sender: Any) {
+        if (fifthLetLabel.text != ""){
         setLabelColors()
+        }
+        
     }
     
     @IBAction func BackTap(_ sender: Any) {
@@ -149,10 +170,12 @@ class ViewController: UIViewController {
     
     
     
+    
     func setLabel(label: String) {
         currentLabel.text = label
         nextLabel()
     }
+    
     
     
     func nextLabel(){
@@ -170,6 +193,7 @@ class ViewController: UIViewController {
     }
     
     
+    
     func lastLabel(){
         if (currentLabel == secondLetLabel) {
         currentLabel = firstLetLabel
@@ -185,6 +209,7 @@ class ViewController: UIViewController {
     }
     
     
+    
     func setLabelColors() {
         let firstLet = getWordLetter(num: 0)
         let secLet = getWordLetter(num: 1)
@@ -192,23 +217,80 @@ class ViewController: UIViewController {
         let fourLet = getWordLetter(num: 3)
         let fifthLet = getWordLetter(num: 4)
         
-        if firstLetLabel.text == firstLet {
-            firstLetLabel.backgroundColor = UIColor.green
+        setOneLabelColor(targetLet: firstLet, letterLabel: firstLetLabel)
+        setOneLabelColor(targetLet: secLet, letterLabel: secondLetLabel)
+        setOneLabelColor(targetLet: thirdLet, letterLabel: thirdLetLabel)
+        setOneLabelColor(targetLet: fourLet, letterLabel: fourthLetLabel)
+        setOneLabelColor(targetLet: fifthLet, letterLabel: fifthLetLabel)
+    }
+    
+    
+    
+    func setOneLabelColor(targetLet: String, letterLabel: UILabel) {
+        let firstLet = getWordLetter(num: 0)
+        let secLet = getWordLetter(num: 1)
+        let thirdLet = getWordLetter(num: 2)
+        let fourLet = getWordLetter(num: 3)
+        let fifthLet = getWordLetter(num: 4)
+        
+        if (letterLabel.text == targetLet) {
+            letterLabel.backgroundColor = UIColor.green
+            setKeyColor(keyLetter: letterLabel.text ?? "", color: 1)
+        } else if (letterLabel.text == firstLet && firstLetLabel.text != firstLet) {
+            letterLabel.backgroundColor = UIColor.yellow
+            setKeyColor(keyLetter: letterLabel.text ?? "", color: 2)
+        } else if (letterLabel.text == secLet && secondLetLabel.text != secLet) {
+            letterLabel.backgroundColor = UIColor.yellow
+            setKeyColor(keyLetter: letterLabel.text ?? "", color: 2)
+        } else if (letterLabel.text == thirdLet && thirdLetLabel.text != thirdLet) {
+            letterLabel.backgroundColor = UIColor.yellow
+            setKeyColor(keyLetter: letterLabel.text ?? "", color: 2)
+        } else if (letterLabel.text == fourLet && fourthLetLabel.text != fourLet) {
+            letterLabel.backgroundColor = UIColor.yellow
+            setKeyColor(keyLetter: letterLabel.text ?? "", color: 2)
+        } else if (letterLabel.text == fifthLet && fifthLetLabel.text != fifthLet) {
+            letterLabel.backgroundColor = UIColor.yellow
+            setKeyColor(keyLetter: letterLabel.text ?? "", color: 2)
+        } else {
+            letterLabel.backgroundColor = UIColor.red
+            setKeyColor(keyLetter: letterLabel.text ?? "", color: 3)
         }
-        if secondLetLabel.text == secLet {
-            secondLetLabel.backgroundColor = UIColor.green
-        }
-        if thirdLetLabel.text == thirdLet {
-            thirdLetLabel.backgroundColor = UIColor.green
-        }
-        if fourthLetLabel.text == fourLet {
-            fourthLetLabel.backgroundColor = UIColor.green
-        }
-        if fifthLetLabel.text == fifthLet {
-            fifthLetLabel.backgroundColor = UIColor.green
+        
+        
+    }
+    
+    
+    func setKeyGreen(keyLetter: String) {
+        
+        for button in keyButtons {
+            if button.titleLabel?.text == keyLetter {
+                button.backgroundColor = UIColor.green
+            }
         }
         
     }
+    
+    func setKeyColor(keyLetter: String, color: Int) {
+        
+        for button in keyButtons {
+            if button.titleLabel?.text == keyLetter {
+                if color == 2 {
+                    button.backgroundColor = UIColor.yellow
+                } else if color == 1{
+                    button.backgroundColor = UIColor.green
+                } else {
+                    button.backgroundColor = UIColor.red
+                }
+            }
+        }
+        
+    }
+    
+    func setKeyRed(keyLetter: String) {
+        
+    }
+    
+    
     
     func getWordLetter(num: Int) -> String {
         let start = targetWord.index(targetWord.startIndex, offsetBy: num)
