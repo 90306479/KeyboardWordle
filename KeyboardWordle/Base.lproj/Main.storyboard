@@ -640,26 +640,59 @@
                                 <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="iMessage Wordle!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXd-rK-Y5r">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="iMessage Wordle" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXd-rK-Y5r">
                                 <rect key="frame" x="51" y="173" width="311" height="57"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="57" id="ezl-FI-lxF"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Type a five letter word and hit Go when ready!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxE-xD-Bbh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Type a five letter word and hit Go when ready" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wxE-xD-Bbh">
                                 <rect key="frame" x="51" y="629" width="311" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="kar-AO-cWm"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Target" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xyt-d4-rst">
+                                <rect key="frame" x="122" y="533.5" width="48.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cSD-V2-Gb3">
+                                <rect key="frame" x="243" y="533" width="69" height="25"/>
+                                <color key="tintColor" red="0.60758274094562514" green="0.49800811839637366" blue="0.36246295976623955" alpha="0.56965917470503835" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Refresh">
+                                    <fontDescription key="titleFontDescription" name="ArialRoundedMTBold" family="Arial Rounded MT Bold" pointSize="8"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="clickRefresh:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zan-t8-ini"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="wxE-xD-Bbh" secondAttribute="bottom" constant="186" id="317-ye-SBj"/>
+                            <constraint firstItem="wxE-xD-Bbh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="39V-cr-Kaz"/>
+                            <constraint firstItem="cSD-V2-Gb3" firstAttribute="centerY" secondItem="xyt-d4-rst" secondAttribute="centerY" constant="1.75" id="8Wg-fw-KE7"/>
+                            <constraint firstItem="wxE-xD-Bbh" firstAttribute="leading" secondItem="pXd-rK-Y5r" secondAttribute="leading" id="AJQ-T5-E4t"/>
                             <constraint firstItem="8sH-sv-Zd3" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="B2M-Le-6Y9"/>
+                            <constraint firstItem="wxE-xD-Bbh" firstAttribute="trailing" secondItem="pXd-rK-Y5r" secondAttribute="trailing" id="Gga-Oy-aWS"/>
+                            <constraint firstItem="wxE-xD-Bbh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="51" id="MTH-Al-gea"/>
+                            <constraint firstItem="xyt-d4-rst" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="122" id="Msx-vO-Vvn"/>
+                            <constraint firstItem="cSD-V2-Gb3" firstAttribute="leading" secondItem="xyt-d4-rst" secondAttribute="trailing" constant="72.5" id="OIY-Ku-0bw"/>
                             <constraint firstItem="02x-O9-0At" firstAttribute="centerX" secondItem="8sH-sv-Zd3" secondAttribute="centerX" id="XkJ-PA-hlq"/>
+                            <constraint firstItem="wxE-xD-Bbh" firstAttribute="top" secondItem="xyt-d4-rst" secondAttribute="bottom" constant="75" id="h2U-WV-iuK"/>
+                            <constraint firstItem="pXd-rK-Y5r" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="129" id="oei-Pn-FoW"/>
+                            <constraint firstItem="wxE-xD-Bbh" firstAttribute="top" secondItem="cSD-V2-Gb3" secondAttribute="bottom" constant="71" id="pQ0-eo-5Dp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cSD-V2-Gb3" secondAttribute="trailing" constant="102" id="vhE-NL-xTa"/>
                             <constraint firstItem="02x-O9-0At" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="320" id="xRJ-X2-AMk"/>
                             <constraint firstItem="8sH-sv-Zd3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="zN4-37-zJm"/>
                         </constraints>
@@ -697,7 +730,9 @@
                         <outlet property="firstLetLabel" destination="G7R-Y7-FIy" id="Nix-H1-7p1"/>
                         <outlet property="fourthLetLabel" destination="D0U-5g-IAh" id="CdS-hu-iNZ"/>
                         <outlet property="hiddenLabel" destination="ERJ-Gv-YfH" id="8Kw-Jl-PtR"/>
+                        <outlet property="refreshButton" destination="cSD-V2-Gb3" id="AcW-0w-Pnf"/>
                         <outlet property="secondLetLabel" destination="cHC-ba-rum" id="kJW-NZ-W4y"/>
+                        <outlet property="temporaryLabel" destination="xyt-d4-rst" id="2D5-zn-h6N"/>
                         <outlet property="thirdLetLabel" destination="uCo-oA-dFp" id="NTd-Bg-DLD"/>
                     </connections>
                 </viewController>

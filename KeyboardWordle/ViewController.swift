@@ -16,7 +16,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var fifthLetLabel: UILabel!
     @IBOutlet weak var hiddenLabel: UILabel!
     
-    
     @IBOutlet weak var QKey: UIButton!
     @IBOutlet weak var WKey: UIButton!
     @IBOutlet weak var EKey: UIButton!
@@ -46,21 +45,32 @@ class ViewController: UIViewController {
     @IBOutlet weak var GoKey: UIButton!
     @IBOutlet weak var BackKey: UIButton!
     
+    @IBOutlet weak var refreshButton: UIButton!
     
-    let targetWord = "MATCH"
     
+    let wordOptions:[String] = ["MATCH","PHONE","WRONG","OTHER","ANGRY","GRIEF","LOOPS","BRIDE","CHORD","PORCH"]
+    
+    var targetWord: String!
     
     var currentLabel: UILabel!
     
     var keyButtons:[UIButton]!
+    var letLabels:[UILabel]!
     
     
+    
+    @IBOutlet weak var temporaryLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         currentLabel = firstLetLabel
         roundAllLabels()
         keyButtons = [AKey, BKey, CKey, DKey, EKey, FKey, GKey, HKey, IKey, JKey, KKey, LKey, MKey, NKey, OKey, PKey, QKey, RKey, SKey, TKey, UKey, VKey, WKey, XKey, YKey, ZKey]
+        letLabels = [firstLetLabel, secondLetLabel, thirdLetLabel, fourthLetLabel, fifthLetLabel]
+        
+        targetWord = wordOptions.randomElement()
+        
+        temporaryLabel.text = targetWord
     }
     
     func roundAllLabels() {
@@ -177,7 +187,6 @@ class ViewController: UIViewController {
     }
     
     
-    
     func nextLabel(){
         if (currentLabel == firstLetLabel) {
         currentLabel = secondLetLabel
@@ -193,7 +202,6 @@ class ViewController: UIViewController {
     }
     
     
-    
     func lastLabel(){
         if (currentLabel == secondLetLabel) {
         currentLabel = firstLetLabel
@@ -207,7 +215,6 @@ class ViewController: UIViewController {
             currentLabel = fifthLetLabel
         }
     }
-    
     
     
     func setLabelColors() {
@@ -252,7 +259,7 @@ class ViewController: UIViewController {
             letterLabel.backgroundColor = UIColor.yellow
             setKeyColor(keyLetter: letterLabel.text ?? "", color: 2)
         } else {
-            letterLabel.backgroundColor = UIColor.red
+            letterLabel.backgroundColor = UIColor.darkGray
             setKeyColor(keyLetter: letterLabel.text ?? "", color: 3)
         }
         
@@ -260,17 +267,7 @@ class ViewController: UIViewController {
     }
     
     
-    func setKeyGreen(keyLetter: String) {
-        
-        for button in keyButtons {
-            if button.titleLabel?.text == keyLetter {
-                button.backgroundColor = UIColor.green
-            }
-        }
-        
-    }
-    
-    func setKeyColor(keyLetter: String, color: Int) {
+   func setKeyColor(keyLetter: String, color: Int) {
         
         for button in keyButtons {
             if button.titleLabel?.text == keyLetter {
@@ -279,14 +276,10 @@ class ViewController: UIViewController {
                 } else if color == 1{
                     button.backgroundColor = UIColor.green
                 } else {
-                    button.backgroundColor = UIColor.red
+                    button.backgroundColor = UIColor.darkGray
                 }
             }
         }
-        
-    }
-    
-    func setKeyRed(keyLetter: String) {
         
     }
     
@@ -299,6 +292,21 @@ class ViewController: UIViewController {
 
         return String(targetWord[range])
     }
+    
+    @IBAction func clickRefresh(_ sender: Any) {
+        currentLabel = firstLetLabel
+        targetWord = wordOptions.randomElement()
+        temporaryLabel.text = targetWord
+        for button in keyButtons {
+            button.backgroundColor = UIColor.systemGray2
+        }
+        for label in letLabels {
+            label.backgroundColor = UIColor.systemGray4
+            label.text = ""
+        }
+        
+    }
+    
 
 
 }
